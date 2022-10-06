@@ -57,7 +57,7 @@
                         </c:if>
                     </div>
                     <div class="signup-image">
-                        <img src="<c:url value='/views/images/Slide/login.png'/>" alt="sing up image">
+                        <img src="<c:url value='../images/Slide/login.png'/>" alt="sing up image">
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <img src="<c:url value='/views/images/Slide/4.jpg'/>" alt="sing up image">
+                        <img src="<c:url value='../images/Slide/4.jpg'/>" alt="sing up image">
                     </div>
 
                     <div class="signin-form">
@@ -109,8 +109,8 @@
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="<c:url value='/views/OwlCarousel2-2.3.4/dist/owl.carousel.min.js'/>"></script>
-    <script src="<c:url value='/views/css/script.js'/>"></script>
+    <script src="<c:url value='/OwlCarousel2-2.3.4/dist/owl.carousel.min.js'/>"></script>
+    <script src="<c:url value='/css/script.js'/>"></script>
 </body>
 
 </html>
