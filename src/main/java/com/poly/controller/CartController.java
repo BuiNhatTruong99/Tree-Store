@@ -25,16 +25,15 @@ public class CartController {
 	@Autowired
 	SanPhamDAO spDAO;
 	
-	// ---- CHƯA CÓ TRANG GIỎ HÀNG .JSP ----
-	
-	@RequestMapping("/giohang")
-	public String getGioHang(Model model) {
-		// Hiển thị tất cả sản phẩm đã chọn trong giỏ hàng
-		model.addAttribute("cart", cartService.getAllItems());
-		// Hiển thị số lượng sản phẩm có trong giỏ hàng
-		model.addAttribute("total", cartService.getCount());
-		return "???";
-	}
+// ---- KHÔNG CÓ TRANG GIỎ HÀNG .JSP ----
+//	@RequestMapping("/giohang")
+//	public String getGioHang(Model model) {
+//		// Hiển thị tất cả sản phẩm đã chọn trong giỏ hàng
+//		model.addAttribute("cart", cartService.getAllItems());
+//		// Hiển thị số lượng sản phẩm có trong giỏ hàng
+//		model.addAttribute("total", cartService.getCount());
+//		return "redirect:/cart";
+//	}
 	
 	@RequestMapping("/giohang/them/{id}")
 	public String themVaoGio(@PathVariable("id") Integer id) {
@@ -53,28 +52,28 @@ public class CartController {
 			cartService.add(item);
 		}
 		
-		return "redirect:/trangchu";
+		return "redirect:/ds-sanpham";
 	}
 	
 	@RequestMapping("/giohang/capnhat/{id}")
 	public String update(@PathVariable("id") Integer id, @RequestParam("soluong") Integer qty) {
 		cartService.update(id, qty);
 		System.out.println(qty);
-		return "redirect:/???";// hiển thị giỏ hàng
+		return "redirect:/ds-sanpham";// hiển thị giỏ hàng
 	}
 	
 	@RequestMapping("/giohang/xoa/{id}")
 	public String remove(@PathVariable("id") Integer id) {
 		// Xóa sản phẩm trong giỏ hàng bằng id
 		cartService.remove(id);
-		return "redirect:/trangchu";// hiển thị giỏ hàng
+		return "redirect:/ds-sanpham";// hiển thị giỏ hàng
 	}
 
 	@RequestMapping("/giohang/clear")
 	public String clear() {
 		// Làm trống giỏ hàng (Xóa sạch tất cả sản phẩm đã chọn trong giỏ hàng)
 		cartService.clear();
-		return "redirect:/trangchu";
+		return "redirect:/ds-sanpham";
 	}
 	
 }

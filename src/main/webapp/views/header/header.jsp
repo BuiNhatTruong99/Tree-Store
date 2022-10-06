@@ -81,9 +81,16 @@
 												</div>
 												<div class="cart_info">
 													<a href="/sanpham/id_sp=${item.id}">${item.ten}</a>
-													<p>Amount: <input type="number" value='${item.soluong}'>
-														x <span> $${item.gia} </span>
+													
+													<!-- CẬP NHẬT GIỎ HÀNG -->
+													<p>Amount: 
+													 	<form name="frmUpdate" action="/giohang/capnhat/${item.id}" method="post">
+														<input type="number" name="soluong" onchange="document.frmUpdate.submit();" value='${item.soluong}' min="1">
+														x 
+														<span> $${item.gia} </span>
+														</form>
 													</p>
+													
 												</div>
 												<div class="cart_remove">
 													<a href="/giohang/xoa/${item.id}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

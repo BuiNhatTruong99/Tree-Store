@@ -8,6 +8,7 @@ import com.poly.dao.SanPhamDAO;
 import com.poly.model.DanhMuc;
 import com.poly.model.MucGioHang;
 import com.poly.model.SanPham;
+import com.poly.service.ParamService;
 import com.poly.shopping.CartService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProductController {
@@ -25,6 +27,8 @@ public class ProductController {
 	SanPhamDAO spDAO;
 	@Autowired
 	CartService cartService;
+	@Autowired
+	ParamService paramService;
 	
 	@RequestMapping("/trangchu")
 	public String getTrangChu(Model model)
@@ -80,6 +84,9 @@ public class ProductController {
 		model.addAttribute("total", cartService.getCount());
 		// Hiển thị tổng tiền tất cả sản phẩm trong giỏ hàng
 		model.addAttribute("totalAmount", cartService.getAmount());
+		
+		int update_soluong = paramService.getInt("update_soluong", 1);
+		System.out.println(update_soluong);
 	}
 	
 	// Lấy tất cả dữ liệu trong DanhMuc
