@@ -90,10 +90,17 @@ public class ProductController {
 	}
 	
 	// Lấy tất cả dữ liệu trong DanhMuc
-	@ModelAttribute("ListDM")
-	public List<DanhMuc> getListDanhMuc()
+	@ModelAttribute("DM_CayCanh")
+	public List<DanhMuc> getListCayCanh()
 	{
-		return dmDAO.findAll();
+		return dmDAO.findAllByTree();
+	}
+
+	// Lấy tất cả dữ liệu trong DanhMuc
+	@ModelAttribute("DM_Hoa")
+	public List<DanhMuc> getListHoa()
+	{
+		return dmDAO.findAllByFlower();
 	}
 	
 	// Lấy tất cả dữ liệu trong SanPham

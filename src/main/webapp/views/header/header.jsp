@@ -176,20 +176,21 @@
 													<ul class="sub_sub_menu lay-show">
 
 														<!-- Danh mục - Điện thoại -->
-														<c:forEach var="item" items="${ListDM}">
+														<c:forEach var="item" items="${DM_Hoa}">
 															<li><a href="/ds-sanpham/id_dm=${item.id_dm}">${item.tendm}</a></li>
 														</c:forEach>
 
 													</ul></li>
 												<li class="menu-item-has-children"><span
 													class="menu-expand"><i class="fa fa-angle-down"></i></span>
-													<a class="shop-other-btn" href="#">Màu Hoa</a>
+													<a class="shop-other-btn" href="#">Loại Cây</a>
 													<ul class="sub_sub_menu other-show">
-														<li><a href="#">Đỏ</a></li>
-														<li><a href="#">Vàng</a></li>
-														<li><a href="#">Xanh</a></li>
-														<li><a href="#">Hồng</a></li>
-														<li><a href="#">Tím</a></li>
+													
+														<!-- Danh mục - Điện thoại -->
+														<c:forEach var="item" items="${DM_CayCanh}">
+															<li><a href="/ds-sanpham/id_dm=${item.id_dm}">${item.tendm}</a></li>
+														</c:forEach>
+														
 													</ul></li>
 												<li class="menu-item-has-children"><span
 													class="menu-expand"><i class="fa fa-angle-down"></i></span>
@@ -240,18 +241,19 @@
 													<ul>
 
 														<!-- Danh mục - Main -->
-														<c:forEach var="item" items="${ListDM}">
+														<c:forEach var="item" items="${DM_Hoa}">
 															<li><a href="/ds-sanpham/id_dm=${item.id_dm}">${item.tendm}</a></li>
 														</c:forEach>
 
 													</ul></li>
 												<li><a href="#">Màu Hoa</a>
 													<ul>
-														<li><a href="#">Đỏ</a></li>
-														<li><a href="#">Vàng</a></li>
-														<li><a href="#">Xanh</a></li>
-														<li><a href="#">Hồng</a></li>
-														<li><a href="#">Tím</a></li>
+													
+														<!-- Danh mục - Điện thoại -->
+														<c:forEach var="item" items="${DM_CayCanh}">
+															<li><a href="/ds-sanpham/id_dm=${item.id_dm}">${item.tendm}</a></li>
+														</c:forEach>
+														
 													</ul></li>
 												<li><a href="#">Hàng kèm theo</a>
 													<ul>
