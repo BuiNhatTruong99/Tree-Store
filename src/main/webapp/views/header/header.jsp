@@ -306,9 +306,10 @@
                 </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="checkout" method="post" class="row g-3">
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form action="checkout" method="post" class="row g-3">
+                    
                         <input type="number" min="0" class="form-control" name="id_kh" value="${user.id_kh}" hidden>
                         
                         <div class="mb-2">
@@ -343,13 +344,14 @@
                             <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" name="ghichukh" rows="2"></textarea>
                         </div>
-                    </form>
+                    
                 </div>
             </div>
             <div class="modal-footer">
                 <a type="submit" href="#" class="btn btn-success">Thanh Toán</a>
                 <a type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
             </div>
+            </form>
         </div>
         </div>
     </div>

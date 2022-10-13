@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,36 +43,41 @@
                     </tr>
                   </thead>
                   <tbody>
+                  <c:set var="stt" value="${0}"></c:set>
+                  <c:forEach var="item" items="${user}">
                     <tr>
-                      <td scope="row">1</td>
-                      <td class="img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC6iPDSqcgCcAtdEz_rPY0B-sxqMd7hz0Hlg&usqp=CAU" alt="Image product" class="img_avt"></td>
-                      <td>Nguyễn Văn A</td>
-                      <td>01/04/1999</td>
-                      <td>Nam</td>
-                      <td>0123456789</td>
-                      <td>teo@gmail.com</td>
-                      <td>1259 Quang Trung, P.9, Q.Gò Vấp</td>
-                      <td>Admin</td>
+                    <c:set var="stt" value="${stt+1}"> </c:set>
+                      <td scope="row">${stt}</td>
+                      <td class="img"><img src="/images/product/${item.anh}" alt="Image product" class="img_avt"></td>
+                      <td>${item.hoten }</td>
+                      <td><fmt:formatDate type="date" dateStyle="short" value="${item.ngaysinh}"/> </td>
                       <td>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="Nguyễn Văn A"><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Chỉnh sửa">add_circle</span></a>
-                        <a href="#" ><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xóa">disabled_by_default</span></a>
+                      <c:if test="${item.gioitinh == false}">
+                      		<c:out value="Nam"></c:out>
+                      	</c:if>
+                      	<c:if test="${item.gioitinh == true}">
+                      		<c:out value="Nữ"></c:out>
+                      	</c:if>
+                      </td>
+                      <td>${item.sodt}</td>
+                      <td>${item.email }</td>
+                      <td>${item.diachi}</td>
+                      <td>
+                      	<c:if test="${item.vaitro == true}">
+                      		<c:out value="Admin"></c:out>
+                      	</c:if>
+                      	<c:if test="${item.vaitro == false}">
+                      		<c:out value="Thành Viên"></c:out>
+                      	</c:if>
+                      	
+                      </td>
+                      <td>
+                        <a href="/admin/user/edit/${item.id_kh}" id="id" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="Nguyễn Văn A"><span class="edit material-symbols-sharp " data-bs-toggle="tooltip"  data-bs-placement="bottom" title="Chỉnh sửa">add_circle</span></a>
+                        <a href="/admin/user/delete/${item.id_kh}" ><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xóa">disabled_by_default</span></a>
+                      	<input type="hidden" id="id" name="id" value="${item.id_kh}">
                       </td>
                     </tr>
-                    <tr>
-                        <td class="id" scope="row">2</td>
-                        <td class="img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC6iPDSqcgCcAtdEz_rPY0B-sxqMd7hz0Hlg&usqp=CAU" alt="Image product" class="img_avt"></td>
-                        <td>Nguyễn Văn A</td>
-                        <td>01/04/1999</td>
-                        <td>Nam</td>
-                        <td>0123456789</td>
-                        <td>teo@gmail.com</td>
-                        <td>1259 Quang Trung, P.9, Q.Gò Vấp</td>
-                        <td>Admin</td>
-                        <td>
-                          <a class="edit_btn" href="#" data-bs-toggle="modal" data-bs-target="#editModal"><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Chỉnh sửa">add_circle</span></a>
-                          <a href="#" ><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xóa">disabled_by_default</span></a>
-                        </td>
-                      </tr>
+                    </c:forEach>
                   </tbody>
             </table>
         </main>
@@ -103,7 +110,9 @@
     </div>
 
     <!-- Modal -->
+     
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <form:form action="/admin/user"  modelAttribute="nguoidung" method="post">
         <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-warning">
@@ -111,87 +120,86 @@
                     <span class="material-icons-sharp">
                         badge
                     </span>
-                    ThÃ´ng tin ngÆ°á»i dÃ¹ng
+                    Thông tin người dùng
+                    <input type="hidden" value="${nguoidung.id_kh}">
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form class="row g-3">
+                    
+                   <div class="row g-3">
                         <div class="col-md-6">
-                            <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC6iPDSqcgCcAtdEz_rPY0B-sxqMd7hz0Hlg&usqp=CAU" alt="Avatar">
-                            <label for="formFile" class="form-label mt-3">áº¢nh Äáº¡i diá»n</label>
-                            <input class="form-control" type="file" id="formFile">
+                            <img class="avatar" name="img" src="/images/product/${nguoidung.anh}" alt="Avatar">
+                            <label for="formFile" class="form-label mt-3">Ảnh đại diện</label>
+                           <input type="file" src="../images/product" name="anh" class="form-control">
+                            
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="inputName" class="form-label">Há» vÃ  tÃªn</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="Nguyá»n VÄn A...">
+                            <form:label path="hoten" class="form-label" >Họ và tên</form:label>
+                                
+                                <form:input path="hoten" id="hoten"  type="text" class="form-control"/>
+                                
                             </div>
                             <div class="mb-3">
-                                <label for="inputDate" class="form-label">NgÃ y sinh</label>
-                                <input type="date" class="form-control" id="inputDate">
+                                <label for="inputDate" class="form-label">Ngày sinh</label>
+                              	<form:input path="ngaysinh" type="date" class="form-control"/>
                             </div>
                             <div>
-                                <label for="inputPassword4" class="form-label">Giá»i tÃ­nh</label>
+                                <label for="inputPassword4" class="form-label">Giới tính</label>
                                 <div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="true">
-                                        <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                        <form:radiobutton path="gioitinh" value="false"  label="Nam"/>
+                                        
+                                        <form:radiobutton path="gioitinh" value="true" label="Nữ"/>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="false">
-                                        <label class="form-check-label" for="inlineRadio2">Ná»¯</label>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="inputPhone" class="form-label">Sá» Äiá»n thoáº¡i</label>
-                            <input type="text" class="form-control" id="inputPhone" placeholder="VD: 038, 096,...">
+                            <label for="inputPhone" class="form-label">Số điện thoại</label>
+                            <input name="sodt" class="form-control" />
                         </div>
                         <div class="col-md-6">
-                          <label for="inputAccount" class="form-label">TÃ i khoáº£n</label>
-                          <input type="text" class="form-control" id="inputAccount">
+                          <label for="inputAccount" class="form-label">Tài khoản</label>
+                          <form:input path="tentk" class="form-control" />
                         </div>
                         <div class="col-md-6">
                             <label for="inputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="nva@gmail.com">
+                            <form:input path="email" class="form-control" type="email" />
                         </div>
                         <div class="col-md-6">
-                          <label for="inputPassword" class="form-label">Máº­t kháº©u</label>
-                          <input type="password" class="form-control" id="inputPassword">
+                          <label for="inputPassword" class="form-label">Mật khẩu</label>
+                          <form:input path="matkhau" class="form-control" />
                         </div>
                         <div class="col-md-6">
-                          <label for="inputAddress" class="form-label">Äá»a chá»</label>
-                          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                          <label for="inputAddress" class="form-label">Địa chỉ</label>
+                         <form:input path="diachi" class="form-control" />
                         </div>
                         <div class="col-md-6">
-                            <label for="inputPassword4" class="form-label">Vai trÃ²</label>
+                            <label for="inputPassword4" class="form-label">Vai trò</label>
                             <div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rule" id="rule" value="true">
-                                    <label class="form-check-label" for="inlineRadio1">Admin</label>
+                                <form:radiobutton path="vaitro" value="true" label="Admin"/>
+                               
+                                    <form:radiobutton path="vaitro" value="false" label="Thành viên"/>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rule" id="rule" value="false">
-                                    <label class="form-check-label" for="inlineRadio2">NhÃ¢n viÃªn</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rule" id="rule" value="false">
-                                    <label class="form-check-label" for="inlineRadio2">KhÃ¡ch hÃ ng</label>
-                                </div>
+                               
                             </div>
                         </div>
-                    </form>
+                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <a type="submit" href="#" class="btn btn-success">LÆ°u thay Äá»i</a>
+            	<button formaction="/add_user"  formmethod="post" class="btn btn-secondary">Lưu thay đổi</button>
+               
                 <a type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
             </div>
         </div>
         </div>
+        </form:form>
     </div>
 
     <script src="<c:url value='/css/admin.js'/>"></script>
@@ -211,6 +219,22 @@
             });
         });
     </script> -->
-
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('table .edit').on('click',function()
+					{
+			
+				var id = $(this).parent().find('#id').val();
+				console.log(id);
+				$.ajax({type: 'GET',
+					url:'/admin/user/edit/' + id,
+					success: function(nguoidung)
+					{
+						$('editModal #hoten').val(nguoidung.hoten);
+					}})
+					})
+			
+		})
+	</script>
 </body>
 </html>

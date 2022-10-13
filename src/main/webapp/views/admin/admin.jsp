@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +30,7 @@
                         <h3>Tổng tiền trong tháng</h3>
                     </div>
                     <div class="middle">
-                        <h1>34.000.000vnđ</h1>
+                        <h1> <fmt:formatNumber value="${tongtien}" type="number" maxFractionDigits = "3"> </fmt:formatNumber> VND </h1>
                     </div>
                 </div>
                 <!-- Số sản phẩm đã bán -->
@@ -39,7 +40,7 @@
                         <h3>Sản phẩm đã bán</h3>
                     </div>
                     <div class="middle">
-                        <h1>36</h1>
+                        <h1>${tongsanpham}</h1>
                     </div>
                 </div>
                 <!-- Số đơn đang chờ xác nhận -->
@@ -50,7 +51,7 @@
                         <h3>Đơn chờ xác nhận</h3>
                     </div>
                     <div class="middle">
-                        <h1>3</h1>
+                        <h1>${xacnhan}</h1>
                     </div>
                 </div>
             </div>
@@ -148,7 +149,7 @@
                             checklist_rtl
                         </span>
                         <h3>Đơn hàng hoàn thành</h3>
-                        <div class="amount1">10 đơn đã giao</div>
+                        <div class="amount1">${dagiao} đơn đã giao</div>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
                         </div>
@@ -158,7 +159,7 @@
                             mark_unread_chat_alt
                         </span>
                         <h3>Số lượng đánh giá tốt</h3>
-                        <div class="amount1">Tổng: 16 đánh giá</div>
+                        <div class="amount1">Tổng: ${danhgia} đánh giá</div>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                         </div>
@@ -169,7 +170,7 @@
                         </span>
                         <h3>Số lượng tài khoản</h3>
                         <div class="amount">
-                            4
+                            ${user}
                         </div>
                     </div>
                     <div class="box-info">
@@ -178,7 +179,7 @@
                         </span>
                         <h3>Tổng đơn hàng đã bán</h3>
                         <div class="amount">
-                            20
+                            ${dagiao}
                         </div>
                     </div>
                 </div>
@@ -205,7 +206,7 @@
             ['9',  8000000],
             ['10',  0],
             ['11',  0],
-            ['12',  0]
+            ['12',  1000000]
           ]);
   
           var options = {
