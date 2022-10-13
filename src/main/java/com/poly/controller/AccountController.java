@@ -52,7 +52,7 @@ public class AccountController {
 		if (user != null) {
 			if (userT.equals(username) && passT.equals(password)) {
 				// Set tên người dùng vào cookie lưu giữ 1 ngày
-				sessionService.set("tennd", user.getHoten());
+				sessionService.set("user", user);
 				
 				// Ghi nhớ tài khoản vào cookie lưu giữ 1 ngày khi check remember
 				if (rem) {

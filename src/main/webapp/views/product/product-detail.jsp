@@ -87,11 +87,9 @@
     <footer class="footer_widgets">
         <%@include file="/views/footer/footer.jsp"%>
     </footer>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="<c:url value='/OwlCarousel2-2.3.4/dist/owl.carousel.min.js'/>"></script>
-    <script src="<c:url value='/css/script.js'/>"></script>
+    
+	<%@include file="/views/foot/linkfoot.jsp"%>
+	
 </body>
 
 </html>

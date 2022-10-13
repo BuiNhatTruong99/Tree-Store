@@ -26,7 +26,7 @@
 									</button>
 								</div>
 							</div>
-							<div class="text-success fw-bold mx-3">${tennd != null? tennd: ""}</div>
+							<div class="text-success fw-bold mx-3">${user.hoten != null? user.hoten: ""}</div>
 							<div class="header_account_area">
 								<div class="header_account-list top_links">
 									<a href="/login"><svg xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@
 												<span>Sub total:</span> <span class="price">$${totalAmount}</span>
 											</div>
 											<div class="cart_total mt-10">
-												<span>total:</span> <span class="price">$${totalAmount}</span>
+												<span>total (gồm VAT):</span> <span class="price">$${totalAmount + (totalAmount * 10 / 100)}</span>
 											</div>
 										</div>
 
@@ -120,7 +120,7 @@
 											<a href="#"><i class="fa fa-shopping-cart"></i> View cart</a>
 										</div>
 										<div class="cart_button">
-											<a class="active" href="#"><i class="fa fa-sign-in"></i>
+											<a class="active" data-bs-toggle="modal" data-bs-target="#checkOutModal"><i class="fa fa-sign-in"></i>
 												Checkout</a>
 										</div>
 
@@ -295,5 +295,63 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Modal -->
+    <div class="modal fade" id="checkOutModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title" id="exampleModalLabel">
+                    Thanh toán
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="checkout" method="post" class="row g-3">
+                        <input type="number" min="0" class="form-control" name="id_kh" value="${user.id_kh}" hidden>
+                        
+                        <div class="mb-2">
+                            <label for="inputName" class="form-label">Tên khách hàng</label>
+                            <input type="text" class="form-control" id="inputName" name="tenkh" value="${user.hoten}" disabled="disabled">
+                        </div>
+                        
+                        <div class="mb-2">
+                            <select class="form-select" size="1" aria-label="size 3 select example">
+                                <option selected>Hình thức thanh toán</option>
+                                <option value="ck">Chuyển khoản</option>
+                                <option value="tc">Thanh toán trực tiếp</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-2">
+                            <label for="inputGia" class="form-label">Giá</label>
+                            <input type="number" min="0" class="form-control" id="inputGia" name="tongtien" value="${totalAmount + (totalAmount * 10 / 100)}" disabled="disled">
+                        </div>
+                        
+                        <div class="mb-2">
+                            <label for="inputSdt" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="inputSdt" name="sodt" value="${user.sodt}">
+                        </div>
+                        
+                        <div class="mb-2">
+                            <label for="inputDiaChi" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="inputDiaChi" name="diachi" value="${not empty user.diachi? user.diachi: ''}">
+                        </div>
+                        
+                        <div class="mb-2">
+                            <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="ghichukh" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a type="submit" href="#" class="btn btn-success">Thanh Toán</a>
+                <a type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
+            </div>
+        </div>
+        </div>
+    </div>
 </header>
 </div>
