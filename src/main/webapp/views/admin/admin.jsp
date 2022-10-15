@@ -70,45 +70,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <c:set var="start" value="${0}"> </c:set>
+                    <c:forEach var="item" items="${choxacnhan}">
                         <tr>
-                            <td>ID00001</td>
-                            <td>Nguyễn Duy Anh</td>
-                            <td>1</td>
-                            <td>7.000.000</td>
-                            <td class="status">Chờ xác nhận</td>
+                        	<c:set var="start" value="${start+ 1}"></c:set>
+                            <td>${start}</td>
+                            <td>${item.hoten}</td>
+                            <td>${item.soluong } </td>
+                            <td>${item.tongtien}</td>
+                            <td class="status">${item.trangthai }</td>
                             <td>
                                 <a class="text-success" href="#" type="submit"><span class="material-symbols-outlined">check_box</span></a>
                                 <a class="text-danger" href="#" type="submit"><span class="material-symbols-outlined">disabled_by_default</span></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>ID00002</td>
-                            <td>Nguyễn Duy Anh</td>
-                            <td>1</td>
-                            <td>7.000.000</td>
-                            <td class="status">Chờ xác nhận</td>
-                            <td>
-                                <a class="text-success" href="#" type="submit"><span class="material-symbols-outlined">check_box</span></a>
-                                <a class="text-danger" href="#" type="submit"><span class="material-symbols-outlined">disabled_by_default</span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>ID00003</td>
-                            <td>Nguyễn Duy Anh</td>
-                            <td>1</td>
-                            <td>7.000.000</td>
-                            <td class="status">Chờ xác nhận</td>
-                            <td>
-                                <a class="text-success" href="#" type="submit"><span class="material-symbols-outlined">check_box</span></a>
-                                <a class="text-danger" href="#" type="submit"><span class="material-symbols-outlined">disabled_by_default</span></a>
-                            </td>
-                        </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
 
             <div class="chart">
-                <h2>Doanh thu năm 2022</h2>
+                <h2>Doanh thu năm ${year }</h2>
                 <div class="line-chart" id="curve_chart" style="width: 100%; height: 67vh;"></div>
             </div>
             
@@ -131,8 +113,8 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hi, ${user.tennd}</p>
-                        <div class="rule">${user.vaitro}</div>
+                        <p>Hi, ${user.hoten}</p>
+                        <div class="rule">${user.vaitro?"admin":""}</div>
                     </div>
                     <div class="profile-photo">
                         <img src="/images/user/${user.anh}" alt="avt">
@@ -151,7 +133,7 @@
                         <h3>Đơn hàng hoàn thành</h3>
                         <div class="amount1">${dagiao} đơn đã giao</div>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" aria-valuenow="${dagiao}" aria-valuemin="0" aria-valuemax="100" style="width: ${tongdon}%"></div>
                         </div>
                     </div>
                     <div class="box-info bg-success">
@@ -161,7 +143,7 @@
                         <h3>Số lượng đánh giá tốt</h3>
                         <div class="amount1">Tổng: ${danhgia} đánh giá</div>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                            <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" aria-valuenow="${good}" aria-valuemin="0" aria-valuemax="100" style="width: ${mucdo}%"></div>
                         </div>
                     </div>
                     <div class="box-info bg-danger">
@@ -170,7 +152,7 @@
                         </span>
                         <h3>Số lượng tài khoản</h3>
                         <div class="amount">
-                            ${user}
+                            ${total_user}
                         </div>
                     </div>
                     <div class="box-info">
@@ -195,18 +177,18 @@
         function drawChart() {
           var data = google.visualization.arrayToDataTable([
             ['Tháng', 'Tổng tiền'],
-            ['1',  10000000],
-            ['2',  16000000],
-            ['3',  23000000],
-            ['4',  3000000],
-            ['5',  15000000],
-            ['6',  7000000],
-            ['7',  50000000],
-            ['8',  70000000],
-            ['9',  8000000],
-            ['10',  0],
-            ['11',  0],
-            ['12',  1000000]
+            ['1',  ${t1}],
+            ['2',  ${t2}],
+            ['3',  ${t3}],
+            ['4',  ${t4}],
+            ['5',  ${t5}],
+            ['6',  ${t6}],
+            ['7',  ${t7}],
+            ['8',  ${t8}],
+            ['9',  ${t9}],
+            ['10', ${t10}],
+            ['11', ${t11}],
+            ['12', ${t12}]
           ]);
   
           var options = {

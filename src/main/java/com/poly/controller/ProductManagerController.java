@@ -22,43 +22,49 @@ import com.poly.model.SanPham;
 
 @Controller
 public class ProductManagerController {
+
 	@Autowired
 	SanPhamDAO dao;
 	@Autowired
 	DanhMucDAO dmDAO;
+	
+	
+
 	
 	@RequestMapping("/admin/product")
 	public String MgSP(Model model)
 	{
 		List<SanPham> sanphams = getListSanPham();
 		model.addAttribute("sp",sanphams);
+		SanPham sanpham = new SanPham();
+		model.addAttribute("sanpham",sanpham);
 		
 		return "/admin/product";
 	}
-//	@RequestMapping("/admin/product/edit/{id}")
-//	public String findid(Model model, @PathVariable("id") int id)
-//	{
-//		SanPham sp = dao.findById(id).get();
-//		model.addAttribute("sanpham",sp);
-//		
-//		return "/admin/product";
-//	}
-	
-	@PostMapping("/admin/product/add")
-	public String addSP(HttpServletRequest req)
+	@RequestMapping("/admin/product/edit/{id}")
+	public String findid(Model model, @PathVariable("id") int id)
 	{
-		SanPham sp = new SanPham();
-//		sp.set
-//		dao.save(sanpham);
+		SanPham sp = dao.findById(id).get();
+		model.addAttribute("sanpham",sp);
+		
+		return "/admin/product";
+	}
+	@PostMapping("/add")
+	public String addSP(SanPham sanpham,HttpServletRequest req)
+	{
+		String dm = req.getParameter("dm");
+		System.out.println(dm);	
+		
+			dao.save(sanpham);
 		
 		
 //		System.out.println(sanpham.getDanhmuc());
 		return "redirect:/admin/product";
 	}
-	
 	@GetMapping("/admin/product/delete/{id}")
 	public String deleteSP(@PathVariable("id") Integer id)
 	{
+		
 		dao.deleteById(id);
 		return "redirect:/admin/product";
 	}
