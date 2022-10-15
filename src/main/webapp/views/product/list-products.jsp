@@ -27,43 +27,44 @@
 								<div id="bwp_filter_ajax950953581664312889"
 									class="bwp-woocommerce-filter-product">
 									<div class="bwp-filter-ajax">
-										<form id="bwp_form_filter_product">
-
+								<!-- LỌC GIÁ -->
+										<form name="frmSearchPrice" action="/search/price" method = "post" id="bwp_form_filter_product">
 											<div class="bwp-filter bwp-filter-category">
 												<div id="pa_category" class="filter_category_product">
 													<div data-id_category="431" class="item-category ">
-														<label class="name">Air Purifying</label>
+														<label class="name">Giá dưới $500</label>
 														<div class="count">
-															<input type="checkbox" name="" id="">
+															<input ${price==1?"checked":""} type="radio" name="price" id="" value="1" onchange="document.frmSearchPrice.submit();" >
 														</div>
 													</div>
 													<div data-id_category="151" class="item-category ">
-														<label class="name">Ceramic Pots</label>
+														<label class="name">Giá từ $500 đến $1.000</label>
 														<div class="count">
-															<input type="checkbox" name="" id="">
+															<input ${price==2?"checked":""} type="radio" name="price" id="" value="2" onchange="document.frmSearchPrice.submit();" >
 														</div>
 													</div>
 													<div data-id_category="401" class="item-category ">
-														<label class="name">Indoor Plants</label>
+														<label class="name">Giá từ $1.000 đến $1.500</label>
 														<div class="count">
-															<input type="checkbox" name="" id="">
+															<input ${price==3?"checked":""} type="radio" name="price" id=""value="3" onchange="document.frmSearchPrice.submit();" >
 														</div>
 													</div>
 													<div data-id_category="381" class="item-category ">
-														<label class="name">Low Maintenance</label>
+														<label class="name">Giá từ $1.500 đến $2.000</label>
 														<div class="count">
-															<input type="checkbox" name="" id="">
+															<input ${price==4?"checked":""} type="radio" name="price" id="" value="4" onchange="document.frmSearchPrice.submit();" >
 														</div>
 													</div>
 													<div data-id_category="407" class="item-category ">
-														<label class="name">Plant Bundle</label>
+														<label class="name">Giá trên $2.000</label>
 														<div class="count">
-															<input type="checkbox" name="" id="">
+															<input ${price==5?"checked":""} type="radio" name="price" id="" value="5" onchange="document.frmSearchPrice.submit();" >
 														</div>
 													</div>
 												</div>
 											</div>
 										</form>
+								<!-- END LỌC GIÁ-->
 									</div>
 								</div>
 							</aside>

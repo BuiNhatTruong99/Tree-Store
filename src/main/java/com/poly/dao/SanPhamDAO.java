@@ -15,4 +15,14 @@ public interface SanPhamDAO extends JpaRepository<SanPham, Integer> {
 	
 	@Query("SELECT p FROM SanPham p WHERE p.tensp = ?1 and p.gia = ?2")
 	SanPham findByName(String tensp, double gia);
+	
+	//------------------ TÌM SẢN PHẨM THEO TÊN -------------------
+	@Query( "SELECT o FROM SanPham o WHERE o.tensp LIKE %?1%")
+	List<SanPham> findSanPhamByName(String keywords);
+	//------------------ END -------------------------------------
+		
+	//------------------ LỌC THEO GIÁ ----------------------------
+	@Query("SELECT o FROM SanPham o WHERE o.gia BETWEEN ?1 AND ?2")
+	List<SanPham> findByPrice(double min, double max);	
+	//------------------ END -------------------------------------
 }

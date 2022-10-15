@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -88,6 +89,54 @@ public class ProductController {
 		int update_soluong = paramService.getInt("update_soluong", 1);
 		System.out.println(update_soluong);
 	}
+	
+	// ------------------------ TÌM THEO TÊN SP ------------------------------
+	@PostMapping("/search/keywords={tensp}")
+	public String search(@PathVariable("tensp") String keywords, Model model) {
+		hienThiGioHang(model);
+		
+		String search = paramService.getString("tensp", "");
+		List<SanPham> searchsp = spDAO.findSanPhamByName(keywords);
+		model.addAttribute("searchsp", search);
+		model.addAttribute("dssanpham", searchsp);
+		
+		return "/product/list-products";
+	}
+	// ------------------------- END TÌM TÊN SP---------------------------------
+
+	// ------------------------ LỌC THEO GIÁ ----------------------------------
+	@PostMapping("/search/price")
+	public String searchGia(Model model, @RequestParam("price") double price ) {
+		hienThiGioHang(model);
+		
+		try {
+			List<SanPham> sr_price = null;
+			if (price == 1) {
+				model.addAttribute("price", price);
+				sr_price = spDAO.findByPrice(0, 499);
+			} else if (price == 2) {
+				model.addAttribute("price", price);
+				sr_price = spDAO.findByPrice(500, 999);
+			} else if (price == 3) {
+				model.addAttribute("price", price);
+				sr_price = spDAO.findByPrice(1000, 1499);
+			} else if (price == 4) {
+				model.addAttribute("price", price);
+				sr_price = spDAO.findByPrice(1500, 1999);
+			} else if (price == 5) {
+				model.addAttribute("price", price);
+				sr_price = spDAO.findByPrice(2000, 3000);
+			}		
+
+			model.addAttribute("sr_price", sr_price);
+			model.addAttribute("dssanpham",sr_price);			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "/product/list-products";
+	}
+	// ----------------------- END LỌC THEO GIÁ ---------------------------------
 	
 	// Lấy tất cả dữ liệu trong DanhMuc
 	@ModelAttribute("DM_CayCanh")
