@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <header>
 	<div class="main-header">
 		<div class="header-top">
@@ -29,7 +30,7 @@
 							<div class="text-success fw-bold mx-3">${user.hoten != null? user.hoten: ""}</div>
 							<div class="header_account_area">
 								<div class="header_account-list top_links">
-									<a href="/login"><svg xmlns="http://www.w3.org/2000/svg"
+									<a href="/logout"><svg xmlns="http://www.w3.org/2000/svg"
 											width="25" height="25" fill="currentColor"
 											class="bi bi-people" viewBox="0 0 16 16">
                                                     <path
@@ -220,7 +221,11 @@
 												<li><a href="#">login</a></li>
 											</ul></li>
 										<li class="menu-item-has-children"><a href="contact.html">
-												Contact Us</a></li>
+												Contact Us </a></li>
+										<c:if test="${user.vaitro}">
+										<li class="menu-item-has-children"><a href="/admin">
+												Admin</a></li>
+										</c:if>
 									</ul>
 								</nav>
 							</div>
@@ -279,6 +284,10 @@
 											<li><a href="login.html">login</a></li>
 										</ul></li>
 									<li><a href="contact.html"> Contact Us</a></li>
+									<c:if test="${user.vaitro}">
+										<li class="menu-item-has-children"><a href="/admin">
+												Admin</a></li>
+									</c:if>
 								</ul>
 							</nav>
 						</div>
@@ -306,11 +315,9 @@
                 </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="checkout" method="post" class="row g-3">
+            <form:form action="/checkout" modelAttribute="donDH" method="post" class="row g-3">
             <div class="modal-body">
                 <div class="container-fluid">
-                    
-                        <input type="number" min="0" class="form-control" name="id_kh" value="${user.id_kh}" hidden>
                         
                         <div class="mb-2">
                             <label for="inputName" class="form-label">Tên khách hàng</label>
@@ -319,15 +326,15 @@
                         
                         <div class="mb-2">
                             <select class="form-select" size="1" aria-label="size 3 select example">
-                                <option selected>Hình thức thanh toán</option>
+                                <option>Hình thức thanh toán</option>
                                 <option value="ck">Chuyển khoản</option>
-                                <option value="tc">Thanh toán trực tiếp</option>
+                                <option value="tc" selected>Thanh toán trực tiếp</option>
                             </select>
                         </div>
                         
                         <div class="mb-2">
                             <label for="inputGia" class="form-label">Giá</label>
-                            <input type="number" min="0" class="form-control" id="inputGia" name="tongtien" value="${totalAmount + (totalAmount * 10 / 100)}" disabled="disled">
+                            <input type="number" min="0" class="form-control" id="inputGia" name="tongHoaDon" value="${totalAmount + (totalAmount * 10 / 100)}" disabled="disabled">
                         </div>
                         
                         <div class="mb-2">
@@ -348,10 +355,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a type="submit" href="#" class="btn btn-success">Thanh Toán</a>
+                <button class="btn btn-success">Thanh Toán</button>
                 <a type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
             </div>
-            </form>
+            </form:form>
         </div>
         </div>
     </div>

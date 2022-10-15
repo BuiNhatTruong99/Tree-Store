@@ -131,11 +131,11 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hi, Đỗ Phi Hùng</p>
-                        <div class="rule">Admin</div>
+                        <p>Hi, ${user.tennd}</p>
+                        <div class="rule">${user.vaitro}</div>
                     </div>
                     <div class="profile-photo">
-                        <img src="https://posapp.vn/wp-content/themes/twentysixteen-child/images/icon-user-slide.png" alt="abc">
+                        <img src="/images/user/${user.anh}" alt="avt">
                     </div>
                 </div>
             </div>

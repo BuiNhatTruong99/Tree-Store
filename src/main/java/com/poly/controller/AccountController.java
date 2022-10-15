@@ -98,11 +98,14 @@ public class AccountController {
 	
 	@RequestMapping("/logout")
 	public String getLogout() {
+		sessionService.remove("user");
 		String taikhoanRmb = cookieService.getValue("taikhoan");
 		String matkhauRmb = cookieService.getValue("matkhau");
+		System.out.println(taikhoanRmb);
+		System.out.println(matkhauRmb);
 		request.setAttribute("taikhoanRmb", taikhoanRmb);
 		request.setAttribute("matkhauRmb", matkhauRmb);
 		
-		return "/account/login";
+		return "redirect:/login";
 	}
 }
