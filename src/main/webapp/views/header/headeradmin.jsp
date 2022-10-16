@@ -14,7 +14,7 @@
                     <span class="material-symbols-outlined">dashboard</span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="/admin/user">
+                <a href="#">
                     <span class="material-symbols-outlined">group</span>
                     <h3>Tài khoản</h3>
                 </a>
@@ -26,7 +26,7 @@
                     <span class="material-symbols-outlined">note_alt</span>
                     <h3>Sản phẩm</h3>
                 </a>
-                <a href="#">
+                <a href="/admin/statistical">
                     <span class="material-symbols-outlined">calendar_month</span>
                     <h3>Thống kê</h3>
                 </a>

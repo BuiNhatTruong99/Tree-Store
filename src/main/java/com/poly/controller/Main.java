@@ -64,9 +64,6 @@ public class Main {
 		double sum = (good / dg) * 100;
 		model.addAttribute("mucdo",sum);
 		
-		
-		
-		
 		int n = ddhdao.findnotdone(time).size();
 		model.addAttribute("xacnhan",n);
 		int d = ddhdao.finddone(time).size();

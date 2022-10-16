@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.poly.dao.DonDatHangDAO;
 import com.poly.model.Chart;
-import com.poly.model.DonDatHang;
 import com.poly.model.Year;
 
 @Controller
@@ -20,7 +19,7 @@ public class ChartController {
 	@Autowired
 	DonDatHangDAO dao;
 
-	@RequestMapping("thongke") // Filter data group by year
+	@RequestMapping("/admin/statistical") // Filter data group by year
 	public String chart(Model model, HttpServletRequest request) {
 		int value;
 		String year = request.getParameter("year");
@@ -33,7 +32,7 @@ public class ChartController {
 		System.out.println(year);
 		List<Chart> list = dao.getValue(value);
 		model.addAttribute("value", list);
-		return "thongke";
+		return "/admin/thongke";
 	}
 
 	@ModelAttribute("years") // Get all year put into select box
