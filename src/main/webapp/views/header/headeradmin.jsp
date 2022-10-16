@@ -30,7 +30,7 @@
                     <span class="material-symbols-outlined">loyalty</span>
                     <h3>Giảm giá</h3>
                 </a>
-                <a href="#">
+                <a href="/thongke">
                     <span class="material-symbols-outlined">calendar_month</span>
                     <h3>Thống kê</h3>
                 </a>
