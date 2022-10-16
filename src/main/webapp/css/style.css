@@ -1640,3 +1640,37 @@ ul {
     color: #fff;
     background-color: #79a206;
 }
+/*************** Chart ********************/
+.chart {
+    margin: 10px auto;
+    text-align: center;
+}
+.chart .top-title h1{
+    color: rgb(97, 97, 163);
+}
+.chart .my-list {
+    margin: 5px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chart-respon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chart-respon>.chart-area {
+	margin: 20px;
+    width: 700px!important;
+    height: auto!important;
+}
+#myChart {
+    width: 100%!important;
+    height: 100%!important;
+}
+.year-title, .year-value, .btn {
+	    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
