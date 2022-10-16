@@ -147,7 +147,7 @@ INSERT DonDatHang(NgayDat ,GhiChuKH ,TongTien, TrangThai, SoDT, DiaChi, ID_KH)
 -- Insert DonDatChiTiet
 INSERT DonDatChiTiet(ID_DDH ,ID_SP, SoLuong ,TongTien ) VALUES ( 1, 1, 2, 2600 )
 INSERT DonDatChiTiet(ID_DDH ,ID_SP, SoLuong ,TongTien ) VALUES ( 2, 2, 1, 1300 )
-INSERT DonDatChiTiet(ID_DDH ,ID_SP, SoLuong ,TongTien ) VALUES ( 2, 3, 1, 1300 )
+INSERT DonDatChiTiet(ID_DDH ,ID_SP, SoLuong ,TongTien ) VALUES ( 3, 3, 1, 1300 )
 
 -- Insert Feedback
 INSERT FeedBack (ID_KH , ID_SP ,DanhGia ,NoiDung ,NgayDang ) 
@@ -180,3 +180,19 @@ where dh.TrangThai like N'Chờ xác nhận'
 go
 
 -- exec sp_xacnhan
+
+-- tạo pro xoá
+if OBJECT_ID('del ') is not null
+	drop proc sp_xacnhan 
+go
+create proc del @id int
+as
+	
+					delete from DonDatChiTiet 
+						where ID_DDH = @id
+					delete from DonDatHang 
+						where ID_DDH = @id
+			
+go
+
+-- exec del 2
