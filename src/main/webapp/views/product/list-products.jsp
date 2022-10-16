@@ -145,20 +145,23 @@
 
 								</ul>
 							</div>
+							
+							<!-- PHÂN TRANG -->
 							<div class="bwp-top-bar bottom clearfix">
 								<nav aria-label="">
 									<ul class="pagination">
 										<li class="page-item"><a class="page-link" href="#"
-											tabindex="-1"><</a></li>
-										<li class="page-item"><a class="page-link" href="#">1</a></li>
+											tabindex="-1">Frist</a></li>
+										<li class="page-item"><a class="page-link" href="#">Prev</a></li>
 										<li class="page-item" aria-current="page"><a
-											class="page-link" href="#">2</a></li>
-										<li class="page-item"><a class="page-link" href="#">3</a></li>
-										<li class="page-item"><a class="page-link" href="#">></a>
+											class="page-link" href="#">Next</a></li>
+										<li class="page-item"><a class="page-link" href="#">Last</a></li>
 										</li>
 									</ul>
 								</nav>
 							</div>
+							<!-- END -->
+							
 						</div>
 					</div>
 				</div>

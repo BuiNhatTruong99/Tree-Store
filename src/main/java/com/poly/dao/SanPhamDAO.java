@@ -8,6 +8,11 @@ import com.poly.model.SanPham;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+//---------- PHÂN TRANG ------------
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+// ------------- END ----------------
+
 public interface SanPhamDAO extends JpaRepository<SanPham, Integer> {
 	// Lệnh query jpql tìm tất cả sản phẩm có danh mục bằng id danh mục
 	@Query("SELECT p FROM SanPham p WHERE p.danhmuc.id_dm = ?1")
@@ -25,4 +30,5 @@ public interface SanPhamDAO extends JpaRepository<SanPham, Integer> {
 	@Query("SELECT o FROM SanPham o WHERE o.gia BETWEEN ?1 AND ?2")
 	List<SanPham> findByPrice(double min, double max);	
 	//------------------ END -------------------------------------
+	
 }
