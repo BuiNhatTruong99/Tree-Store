@@ -18,7 +18,7 @@
                     <span class="material-symbols-outlined">group</span>
                     <h3>Tài khoản</h3>
                 </a>
-                <a href="#">
+                <a href="/admin/order">
                     <span class="material-symbols-outlined">history_edu</span>
                     <h3>Đơn hàng</h3>
                 </a>

@@ -20,5 +20,32 @@ public interface DonDatHangDAO extends JpaRepository<DonDatHang, Integer> {
 	
 	@Query(value = "select TOP 1 * from DonDatHang order by ID_DDH DESC", nativeQuery = true)
 	DonDatHang getIDTopLast();
-
+	
+	@Query(value = "select * from DonDatHang as d join NguoiDung as nd on d.ID_KH = nd.ID_KH"
+			+ " where d.TrangThai like N'Đã giao'",nativeQuery = true)
+	List<DonDatHang> done();
+	
+	@Query(value = "select * from DonDatHang as d join NguoiDung as nd on d.ID_KH = nd.ID_KH"
+			+ " where d.TrangThai like N'Đang giao'",nativeQuery = true)
+	List<DonDatHang> Notdone();
+	
+	@Query(value = "select * from DonDatHang as d join NguoiDung as nd on d.ID_KH = nd.ID_KH"
+			+ " where d.TrangThai like N'Chờ xác nhận'",nativeQuery = true)
+	List<DonDatHang> confirm();
+	
+	// chờ xác nhận
+	@Query(value = "update DonDatHang set TrangThai = N'Chờ xác nhận' where ID_DDH = ?1",nativeQuery = true)
+	List<DonDatHang> promote(Integer id);
+	
+	// đang giao
+	@Query(value = "update DonDatHang set TrangThai = N'Đang giao' where ID_DDH = ?1",nativeQuery = true)
+	List<DonDatHang> increase(Integer id);
+	
+	// đã giao
+	@Query(value = "update DonDatHang set TrangThai = N'Đã giao' where ID_DDH = ?1",nativeQuery = true)
+	List<DonDatHang> up(Integer id);
+	
+	// xoá đơn hàng
+	@Query(value = "exec del ?1",nativeQuery = true)
+	List<DonDatHang> del(Integer id);
 }
