@@ -114,7 +114,7 @@
                 <div class="profile">
                     <div class="info">
                         <p>Hi, ${user.hoten}</p>
-                        <div class="rule">${user.vaitro?"admin":""}</div>
+                        <div class="rule">${user.vaitro?"Admin":""}</div>
                     </div>
                     <div class="profile-photo">
                         <img src="/images/user/${user.anh}" alt="avt">

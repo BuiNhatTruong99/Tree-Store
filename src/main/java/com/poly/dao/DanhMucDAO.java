@@ -15,4 +15,7 @@ public interface DanhMucDAO extends JpaRepository<DanhMuc, Integer> {
 	// Lệnh query jpql tìm danh mục cây cảnh
 	@Query("SELECT c FROM DanhMuc c WHERE c.id_dm >= 7 AND c.id_dm <= 11")
 	List<DanhMuc> findAllByTree();
+	
+	@Query(value = "SELECT * FROM DanhMuc WHERE id_dm = (SELECT ID_DM FROM SanPham WHERE id_sp = ?1)", nativeQuery = true)
+	DanhMuc findById_SP(int id_sp);
 }
