@@ -44,31 +44,48 @@ public class OderController {
 	}
 	
 	// đã giao
-	@GetMapping("/update/{id}")
+	@RequestMapping("/update/{id}")
 	public String uptrangthai(@PathVariable("id") int id)
-	{
-		dhdao.up(id);
-		return "/admin/order";
+	{	
+		try {
+			dhdao.up(id);
+			return "redirect:/admin/order";
+		} catch (Exception e) {
+			return "redirect:/admin/order";
+		}
 	}
 	// đang giao
-	@GetMapping("/increase/{id}")
+	@RequestMapping("/increase/{id}")
 	public String intrangthai(@PathVariable("id") int id)
 	{
-		dhdao.increase(id);
-		return "/admin/order";
+		try {
+			dhdao.increase(id);
+			return "redirect:/admin/order";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "redirect:/admin/order";
+		}
 	}
 	// chờ xác nhận
-	@GetMapping("/promote/{id}")
+	@RequestMapping("/promote/{id}")
 	public String promotetrangthai(@PathVariable("id") int id)
 	{
-		dhdao.promote(id);
-		return "/admin/order";
+		try {
+			dhdao.promote(id);
+			return "redirect:/admin/order";
+		} catch (Exception e) {
+			return "redirect:/admin/order";
+		}
 	}
 	// xoá đơn hàng
 	@GetMapping("/delete/{id}")
 	public String deletes(@PathVariable("id") int id)
 	{
-		dhdao.del(id);
-		return "/admin/order";
+		try {
+			dhdao.del(id);
+			return "redirect:/admin/order";
+		} catch (Exception e) {
+			return "redirect:/admin/order";
+		}
 	}
 }

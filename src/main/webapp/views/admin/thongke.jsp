@@ -51,7 +51,7 @@
 							<h1>BIỂU ĐỒ THỐNG KÊ</h1>
 						</div>
 						<!-- Select box to chose years -->
-						<form action="thongke" method="get">
+						<form action="statistical" method="get">
 							<div class="col-md-4 row year m-auto">
 								<div class="col-3 col-md-3 p-0 year-title">
 									<label for="inputSLTK" class="form-label">Năm:</label>

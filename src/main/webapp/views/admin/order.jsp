@@ -49,7 +49,7 @@
                       <td>${item.tongtien }</td>
                       <td>${item.trangthai}</td>
                       <td>
-                        <a href="/increase/${item.id_ddh}"><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xác nhận">task_alt</span></a>
+                        <a type="submit" href="/increase/${item.id_ddh}"><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xác nhận">task_alt</span></a>
                         <a href="#"><span class="material-symbols-sharp" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-bs-placement="bottom" title="Xem chi tiết">expand_circle_down</span></a>
                         <a href="/delete/${item.id_ddh }" ><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xóa">disabled_by_default</span></a>
                       </td>
