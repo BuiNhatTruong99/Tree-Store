@@ -11,10 +11,10 @@ public interface DonDatChiTietDAO extends JpaRepository<DonDatChiTiet, Integer> 
 	@Query(value = "exec dbo.spsell ", nativeQuery = true)
 	int chuatt();
 
-	@Query(value = "select ct.TongTien  from DonDatHang as dh join DonDatChiTiet ct \r\n"
+	@Query(value = "select sum(ct.TongTien) from DonDatHang as dh join DonDatChiTiet ct \r\n"
 			+ "on ct.ID_DDH = dh.ID_DDH where TrangThai like N'Đã giao' and MONTH(dh.NgayDat) = ?1"
 			,nativeQuery = true)
-	int tongtien(Integer time);
+	String tongtien(Integer time);
 
 	// Doanh thu năm hiện tại theo tháng - Quốc Anh
 	

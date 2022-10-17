@@ -4,12 +4,15 @@ import java.time.Year;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Null;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.poly.dao.ChuaThanhToanDao;
 import com.poly.dao.DanhGiaDAO;
@@ -19,11 +22,13 @@ import com.poly.dao.NguoiDungDAO;
 import com.poly.model.ChuaThanhToan;
 import com.poly.model.DonDatChiTiet;
 import com.poly.model.DonDatHang;
+import com.poly.service.SessionService;
 
 
 @Controller
 public class Main {
-	
+	@Autowired
+	SessionService session;
 	@Autowired
 	NguoiDungDAO dao;
 	@Autowired
@@ -37,36 +42,48 @@ public class Main {
 	
 
 	@GetMapping("/admin")
-	public String AdminSP(Model model)
+	public String AdminSP(Model model, HttpServletRequest request)
 	{
+		session.set("uri-user", request.getRequestURI());
+		
 		// lấy tháng hiện tại
 		int time = new Date().getMonth()+1;
 		
+		// Tổng số người dùng
 		int nguoidung = dao.findAll().size();
 		model.addAttribute("total_user",nguoidung);
 		
-		int dg = dgdao.findAll().size();
-		model.addAttribute("danhgia",dg);
-	
+		// Tổng đơn hàng
 		int tongdh = dddao.chuatt();
 		model.addAttribute("tongsanpham",tongdh);
-//		System.out.println(tongdh);
-		int tongtien = dddao.tongtien(time);
+		
+		// Tổng tiền kiếm được
+		String tongtien = dddao.tongtien(time);
+		if (tongtien ==null) {
+			tongtien = "0";
+		}else {
+			tongtien = tongtien;
+		}
 		model.addAttribute("tongtien",tongtien);
 		
-//		List<DonDatChiTiet> a = dddao.chuatt();
-//		System.out.println(a);
+		// Đánh giá
+		int dg = dgdao.findAll().size();
+		model.addAttribute("danhgia",dg);
 		
 		// đánh giá tốt
 		float good = dgdao.dgtot().size();
 		model.addAttribute("good",good);
 		
+		// Mức độ
 		double sum = (good / dg) * 100;
 		model.addAttribute("mucdo",sum);
 		
+		// Số đơn hàng chờ xác nhận
 		int n = ddhdao.findnotdone(time).size();
 		model.addAttribute("xacnhan",n);
-		int d = ddhdao.finddone(time).size();
+		
+		// Số đơn hàng đã giao
+		int d = ddhdao.finddone(time);
 		model.addAttribute("dagiao",d);
 		
 		float tongdonhang = ddhdao.findAll().size();
@@ -76,7 +93,6 @@ public class Main {
 		DoanhThu(model);
 
 		List<ChuaThanhToan> dh = cttDao.choxacnhan();
-//		System.out.println(dh);
 		model.addAttribute("choxacnhan",dh);
 	
 		
@@ -188,6 +204,6 @@ public class Main {
 			model.addAttribute("t12",dddao.thang12(year));
 		}
 			
-	}
+	}	
 	// ------------------ QUOC ANH ------------------
 }

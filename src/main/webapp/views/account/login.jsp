@@ -76,11 +76,11 @@
                         <form method="POST" action="/login" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="fas fa-user"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" value="${taikhoanLuu}"/>
+                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" value="hung123"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="fas fa-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" value="${matkhauLuu}"/>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" value="Hung123"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember" id="remember" class="agree-term" />

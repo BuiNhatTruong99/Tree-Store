@@ -14,7 +14,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		// TODO Auto-generated method stub
 		registry.addInterceptor(auth)
-				.addPathPatterns("/admin", "/checkout", "/giohang/**")
+				.addPathPatterns("/admin", "/admin/**", "/checkout", "/giohang/**")
 				.excludePathPatterns("/trangchu", "/login", "/register", "/logout");	
 	}
 }

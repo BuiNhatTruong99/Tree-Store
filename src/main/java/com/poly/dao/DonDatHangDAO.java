@@ -17,8 +17,8 @@ public interface DonDatHangDAO extends JpaRepository<DonDatHang, Integer> {
 			+ "and MONTH(NgayDat) = ?1 ",nativeQuery = true)
 	List<DonDatHang> findnotdone(Integer time);
 	
-	@Query(value = "select * from DonDatHang as d where d.trangthai like N'Đã giao'	and MONTH(NgayDat) = ?1",nativeQuery = true)
-	List<DonDatHang> finddone(Integer time);
+	@Query(value = "select count(*) from DonDatHang as d where d.trangthai like N'Đã giao'	and MONTH(NgayDat) = ?1",nativeQuery = true)
+	int finddone(Integer time);
 	
 	@Query(value = "select TOP 1 * from DonDatHang order by ID_DDH DESC", nativeQuery = true)
 	DonDatHang getIDTopLast();

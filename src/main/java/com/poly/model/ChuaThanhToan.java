@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ChuaThanhToan {
 	@Id
+	int id;
 	String hoten;
 	int soluong;
 	double tongtien;

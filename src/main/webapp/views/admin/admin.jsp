@@ -80,8 +80,8 @@
                             <td>${item.tongtien}</td>
                             <td class="status">${item.trangthai }</td>
                             <td>
-                                <a class="text-success" href="#" type="submit"><span class="material-symbols-outlined">check_box</span></a>
-                                <a class="text-danger" href="#" type="submit"><span class="material-symbols-outlined">disabled_by_default</span></a>
+                                <a class="text-success" href="/increase/${item.id}" type="submit"><span class="material-symbols-outlined">check_box</span></a>
+                                <a class="text-danger" href="/delete/${item.id}" type="submit"><span class="material-symbols-outlined">disabled_by_default</span></a>
                             </td>
                         </tr>
                         </c:forEach>
