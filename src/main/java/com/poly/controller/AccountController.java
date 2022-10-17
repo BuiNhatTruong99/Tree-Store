@@ -10,8 +10,6 @@ import com.poly.service.SessionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,15 +60,20 @@ public class AccountController {
 					cookieService.remove("taikhoan");
 					cookieService.remove("matkhau");
 				}
-
-				return "redirect:/trangchu"; 
+				
+				String uri = sessionService.get("security-uri");
+				if (uri != null) {
+					return "redirect:" + uri; 
+				}else {
+					return "redirect:/trangchu";
+				}
 			}else {
 				message = "Tài khoản hoặc mật khẩu không đúng!";
 				request.setAttribute("message", message);
 				return "/account/login";
 			}
 		}else {
-			message = "Tài khoản này không tồn tại. Vui lòng bạn kéo xuống để đăng ký!";
+			message = "Tài khoản này không tồn tại. Vui lòng bạn kéo lên để đăng ký!";
 			request.setAttribute("message", message);
 			return "/account/login";
 		}
@@ -103,8 +106,8 @@ public class AccountController {
 		String matkhauRmb = cookieService.getValue("matkhau");
 		System.out.println(taikhoanRmb);
 		System.out.println(matkhauRmb);
-		request.setAttribute("taikhoanRmb", taikhoanRmb);
-		request.setAttribute("matkhauRmb", matkhauRmb);
+		request.setAttribute("taikhoanLuu", taikhoanRmb);
+		request.setAttribute("matkhauLuu", matkhauRmb);
 		
 		return "redirect:/login";
 	}

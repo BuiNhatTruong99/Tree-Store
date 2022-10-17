@@ -49,13 +49,20 @@ public class ProductManagerController {
 		return "/admin/product";
 	}
 	
+	
 	@PostMapping("/admin/product/create")
 	public String addSP(@RequestParam(required = true, name = "trangthai") boolean trangthai,
 						@RequestParam(required = false, name = "is_delete") boolean is_delete,
 						@RequestParam("anh_sp") MultipartFile attach) throws IOException
 	{
 		// Lưu ảnh sản phẩm
-		String fileName = param.saveImage(attach, "images/product");
+		String fileName;
+		if (attach != null) {
+			fileName = param.saveImage(attach, "images/product");
+		}else {
+			fileName = "imgpro_default.png";
+		}
+		 
 		SanPham sp = new SanPham();
 		sp.setTensp(param.getString("tensp", ""));
 		sp.setGia(param.getDouble("gia", 0));

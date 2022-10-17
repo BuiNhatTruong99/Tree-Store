@@ -76,11 +76,11 @@
                         <form method="POST" action="/login" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="fas fa-user"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" value="${taikhoanRmb}"/>
+                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" value="${taikhoanLuu}"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="fas fa-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" value="${matkhauRmb}"/>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" value="${matkhauLuu}"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember" id="remember" class="agree-term" />
@@ -92,7 +92,7 @@
                             </div>
                         </form>
                         <!-- Thông báo -->
-                        <div class="px-2 text-center text-white bg-danger">${message}</div>
+                        <div class="px-2 text-center text-white bg-danger">${message}${param.error}</div>
                         
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
