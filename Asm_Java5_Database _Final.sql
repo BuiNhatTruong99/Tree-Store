@@ -313,7 +313,7 @@ go
 
 create proc spsell
 as 
-	select SUM(ct.soluong) as N'Đơn đã giao' from DonDatChiTiet as ct join DonDatHang as dd 
+	select COUNT(ct.soluong) as N'Đơn đã giao' from DonDatChiTiet as ct join DonDatHang as dd 
 	on ct.ID_DDH = dd.ID_DDH where dd.trangthai like N'Đã giao'
 go
 --exec spsell
@@ -324,10 +324,9 @@ if OBJECT_ID('sp_xacnhan ') is not null
 go
 create proc sp_xacnhan
 as
-select nd.HoTen,ct.SoLuong,ct.TongTien,dh.TrangThai from  DonDatHang as dh 
-join NguoiDung as nd on dh.ID_KH = nd.ID_KH
-join DonDatChiTiet ct on dh.ID_DDH = ct.ID_DDH
-where dh.TrangThai like N'Chờ xác nhận'
+	select dh.ID_DDH as Id, HoTen, sum(SoLuong) as SoLuong , sum(dh.TongTien) as TongTien, TrangThai 
+	from DonDatHang dh left join DonDatChiTiet ct on dh.ID_DDH = ct.ID_DDH join NguoiDung nd on nd.ID_KH = dh.ID_KH 
+	where trangthai like N'Chờ xác nhận' group by dh.ID_DDH,HoTen,NgayDat,TrangThai
 go
 
 -- exec sp_xacnhan
