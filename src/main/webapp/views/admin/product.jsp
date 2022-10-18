@@ -31,7 +31,8 @@
  						$('#editModal #tensp').val(sanpham.tensp);
 						$('#editModal #gia').val(sanpham.gia);
 						$('#editModal #sltonkho').val(sanpham.sltonkho);
-						//${'#editModal #danhmuc'}.val(sanpham.danhmuc);
+						
+						$('#dm option[value="'+sanpham.id_dm+'"]').attr("selected", "selected");
 						if (sanpham.trangthai == true) {
 							$('#editModal #trangthai1:selected') 
 						} else {
@@ -55,7 +56,49 @@
 	<div class="container2">
 		<!-- BEGIN ASIDE -->
 		<aside>
-			<%@include file="/views/header/headeradmin.jsp"%>
+			<div class="top">
+                <div class="logo">
+                    <a href="/trangchu"><img src="<c:url value='/images/logo.jpg'/>" alt="Brand Image"></a> 
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="/admin">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="/admin/user">
+                    <span class="material-symbols-outlined">group</span>
+                    <h3>Tài khoản</h3>
+                </a>
+                <a href="/admin/order">
+                    <span class="material-symbols-outlined">history_edu</span>
+                    <h3>Đơn hàng</h3>
+                </a>
+                <a href="/admin/product" class="active">
+                    <span class="material-symbols-outlined">note_alt</span>
+                    <h3>Sản phẩm</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">star_half</span>
+                    <h3>Đánh giá sản phẩm</h3>
+                </a>
+                <a href="/admin/statistical">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <h3>Thống kê</h3>
+                </a>
+                <a href="/trangchu">
+                    <span class="material-symbols-outlined">loyalty</span>
+                    <h3>Quay lại shop</h3>
+                </a>
+                <a href="/logout">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Đăng xuất</h3>
+                </a>
+            </div>
 		</aside>
 		<!-- END ASIDE -->
 
@@ -277,7 +320,7 @@
                         
                         <div class="col-md-12">
                         	<label for="danhmuc" class="form-label">Loại danh mục</label>
-                            <select class="form-select" name="danhmuc" id="danhmuc" size="1" aria-label="size 3 select example">
+                            <select class="form-select" name="danhmuc" id="dm" size="1" aria-label="size 3 select example">
                                 <c:forEach var="item" items="${danhmuc}">
                                 <option value="${item.id_dm}">${item.tendm}</option>
                                 </c:forEach>

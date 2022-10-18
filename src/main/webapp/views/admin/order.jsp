@@ -16,7 +16,49 @@
     <div class="container2">
         <!-- BEGIN ASIDE -->
         <aside>
-            <%@include file="/views/header/headeradmin.jsp"%>
+            <div class="top">
+                <div class="logo">
+                    <a href="/trangchu"><img src="<c:url value='/images/logo.jpg'/>" alt="Brand Image"></a> 
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="/admin">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="/admin/user">
+                    <span class="material-symbols-outlined">group</span>
+                    <h3>Tài khoản</h3>
+                </a>
+                <a href="/admin/order" class="active">
+                    <span class="material-symbols-outlined">history_edu</span>
+                    <h3>Đơn hàng</h3>
+                </a>
+                <a href="/admin/product">
+                    <span class="material-symbols-outlined">note_alt</span>
+                    <h3>Sản phẩm</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">star_half</span>
+                    <h3>Đánh giá sản phẩm</h3>
+                </a>
+                <a href="/admin/statistical">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <h3>Thống kê</h3>
+                </a>
+                <a href="/trangchu">
+                    <span class="material-symbols-outlined">loyalty</span>
+                    <h3>Quay lại shop</h3>
+                </a>
+                <a href="/logout">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Đăng xuất</h3>
+                </a>
+            </div>
         </aside>
         <!-- END ASIDE -->
 
@@ -96,28 +138,28 @@
                                   </thead>
                                   <tbody>
                                     <tr>
-                                      <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
-                                      <td>Hoa Xanh</td>
+                                      <td class="img"><img src="<c:url value='/images/product/AnhDuong.jpg'/>" alt="Image product" class="img_pro"></td>
+                                      <td>Hoa Ánh Dương</td>
                                       <td>2</td>
                                       <td>$1300</td>
-                                      <td>Hoa cưới</td>
+                                      <td>Hoa bó</td>
                                       <td>$2600</td>
                                     </tr>
                                     <tr>
-                                        <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
-                                        <td>Hoa Xanh</td>
-                                        <td>2</td>
+                                        <td class="img"><img src="<c:url value='/images/product/9.jpg'/>" alt="Image product" class="img_pro"></td>
+                                        <td>Cây xanh</td>
+                                        <td>1</td>
                                         <td>$1300</td>
-                                        <td>Hoa cưới</td>
-                                        <td>$2600</td>
+                                        <td>Cây kiểng</td>
+                                        <td>$1300</td>
                                       </tr>
                                       <tr>
-                                        <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
+                                        <td class="img"><img src="<c:url value='/images/product/Tuoi-Dep.jpg'/>" alt="Image product" class="img_pro"></td>
                                         <td>Hoa Xanh</td>
-                                        <td>2</td>
+                                        <td>1</td>
                                         <td>$1300</td>
                                         <td>Hoa cưới</td>
-                                        <td>$2600</td>
+                                        <td>$1300</td>
                                       </tr>
                                   </tbody>
                             </table>
@@ -168,20 +210,18 @@
                     <div class="accordion-body row">
                         <div class="col">
                             <form class="row g-3">
-                            <c:forEach var="items" items="${notdone }">
                                 <div class="mb-3">
                                     <label for="inputSDT" class="form-label">Số điện thoại</label>
-                                    <input type="text" class="form-control" id="inputSdt" value="${items.sodt }" disabled>
+                                    <input type="text" class="form-control" id="inputSdt" value="" disabled>
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputDiachi" class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="inputDC" value="${items.diachi }" disabled>
+                                    <input type="text" class="form-control" id="inputDC" value="" disabled>
                                 </div>
                                 <div class="mb-3">
                                     <label for="formControlTextarea" class="form-label">Ghi chú khách hàng</label>
-                                    <textarea class="form-control" id="formControlTextarea" rows="4" disabled>${items.ghichukh }</textarea>
+                                    <textarea class="form-control" id="formControlTextarea" rows="4" disabled></textarea>
                                 </div>
-                                </c:forEach>
                             </form>
                         </div>
                         <div class="col">
@@ -200,28 +240,28 @@
                                   </thead>
                                   <tbody>
                                     <tr>
-                                      <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
-                                      <td>Hoa Xanh</td>
+                                      <td class="img"><img src="<c:url value='/images/product/AnhDuong.jpg'/>" alt="Image product" class="img_pro"></td>
+                                      <td>Hoa Ánh Dương</td>
                                       <td>2</td>
                                       <td>$1300</td>
-                                      <td>Hoa cưới</td>
+                                      <td>Hoa bó</td>
                                       <td>$2600</td>
                                     </tr>
                                     <tr>
-                                        <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
-                                        <td>Hoa Xanh</td>
-                                        <td>2</td>
+                                        <td class="img"><img src="<c:url value='/images/product/9.jpg'/>" alt="Image product" class="img_pro"></td>
+                                        <td>Cây xanh</td>
+                                        <td>1</td>
                                         <td>$1300</td>
-                                        <td>Hoa cưới</td>
-                                        <td>$2600</td>
+                                        <td>Cây kiểng</td>
+                                        <td>$1300</td>
                                       </tr>
                                       <tr>
-                                        <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
+                                        <td class="img"><img src="<c:url value='/images/product/Tuoi-Dep.jpg'/>" alt="Image product" class="img_pro"></td>
                                         <td>Hoa Xanh</td>
-                                        <td>2</td>
+                                        <td>1</td>
                                         <td>$1300</td>
                                         <td>Hoa cưới</td>
-                                        <td>$2600</td>
+                                        <td>$1300</td>
                                       </tr>
                                   </tbody>
                             </table>
@@ -313,28 +353,28 @@
                                   </thead>
                                   <tbody>
                                     <tr>
-                                      <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
-                                      <td>Hoa Xanh</td>
+                                      <td class="img"><img src="<c:url value='/images/product/AnhDuong.jpg'/>" alt="Image product" class="img_pro"></td>
+                                      <td>Hoa Ánh Dương</td>
                                       <td>2</td>
                                       <td>$1300</td>
-                                      <td>Hoa cưới</td>
+                                      <td>Hoa bó</td>
                                       <td>$2600</td>
                                     </tr>
                                     <tr>
-                                        <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
-                                        <td>Hoa Xanh</td>
-                                        <td>2</td>
+                                        <td class="img"><img src="<c:url value='/images/product/9.jpg'/>" alt="Image product" class="img_pro"></td>
+                                        <td>Cây xanh</td>
+                                        <td>1</td>
                                         <td>$1300</td>
-                                        <td>Hoa cưới</td>
-                                        <td>$2600</td>
+                                        <td>Cây kiểng</td>
+                                        <td>$1300</td>
                                       </tr>
                                       <tr>
-                                        <td class="img"><img src="<c:url value='images/product/Tinh-Yeu-Xanh.jpg'/>" alt="Image product" class="img_pro"></td>
+                                        <td class="img"><img src="<c:url value='/images/product/Tuoi-Dep.jpg'/>" alt="Image product" class="img_pro"></td>
                                         <td>Hoa Xanh</td>
-                                        <td>2</td>
+                                        <td>1</td>
                                         <td>$1300</td>
                                         <td>Hoa cưới</td>
-                                        <td>$2600</td>
+                                        <td>$1300</td>
                                       </tr>
                                   </tbody>
                             </table>
@@ -357,14 +397,12 @@
 				</div>
 				<div class="profile">
 					<div class="info">
-						<p>Hi, Đỗ Phi Hùng</p>
-						<div class="rule">Admin</div>
-					</div>
-					<div class="profile-photo">
-						<img
-							src="https://posapp.vn/wp-content/themes/twentysixteen-child/images/icon-user-slide.png"
-							alt="abc">
-					</div>
+                        <p>Hi, ${user.hoten}</p>
+                        <div class="rule">${user.vaitro?"Admin":""}</div>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="/images/user/${user.anh}" alt="avt">
+                    </div>
 				</div>
 			</div>
 		</div>

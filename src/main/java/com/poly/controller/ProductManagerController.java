@@ -25,8 +25,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.poly.dao.DanhMucDAO;
 import com.poly.dao.SanPhamDAO;
+import com.poly.dao.SanPhamShowDAO;
 import com.poly.model.DanhMuc;
 import com.poly.model.SanPham;
+import com.poly.model.SanPhamShow;
 import com.poly.service.ParamService;
 
 @Controller
@@ -37,6 +39,8 @@ public class ProductManagerController {
 	SanPhamDAO spDAO;
 	@Autowired
 	DanhMucDAO dmDAO;
+	@Autowired
+	SanPhamShowDAO spsDAO;
 	
 	@RequestMapping("/admin/product")
 	public String MgSP(Model model)
@@ -57,9 +61,9 @@ public class ProductManagerController {
 	{
 		// Lưu ảnh sản phẩm
 		String fileName;
-		if (attach != null) {
+		try {
 			fileName = param.saveImage(attach, "images/product");
-		}else {
+		} catch (Exception e) {
 			fileName = "imgpro_default.png";
 		}
 		 
@@ -80,18 +84,14 @@ public class ProductManagerController {
 	}
 	
 	@RequestMapping(value = "/admin/product/edit/{id}", method = RequestMethod.GET, produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
-	public ResponseEntity<SanPham> find(@PathVariable("id") int id)
+	public ResponseEntity<SanPhamShow> find(@PathVariable("id") int id)
 	{
-		SanPham sp = spDAO.findById(id).get();
-		//DanhMuc dm = dmDAO.findById_SP(sp.getId_sp());
-		//sp.setDanhmuc(dm);
-		sp.setDanhmuc(null);
-		sp.setDondatchitiet(null);
-		sp.setDanhgia(null);
+		// Show thông tin sản phẩm
+		SanPhamShow sp = spsDAO.findBy_Id_SP(id);
 		try {
-			return new ResponseEntity<SanPham>(sp, HttpStatus.OK);
+			return new ResponseEntity<SanPhamShow>(sp, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<SanPham>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<SanPhamShow>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -102,7 +102,12 @@ public class ProductManagerController {
 						@RequestParam("anh_sp") MultipartFile attach) throws IOException
 	{
 		// Lưu ảnh sản phẩm
-		String fileName = param.saveImage(attach, "images/product");
+		String fileName;
+		try {
+			fileName = param.saveImage(attach, "images/product");
+		} catch (Exception e) {
+			fileName = "imgpro_default.png";
+		}
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		SanPham sp = spDAO.findById(id).get();

@@ -74,14 +74,12 @@
 						</div>
 						<div class="profile">
 							<div class="info">
-								<p>Hi, Đỗ Phi Hùng</p>
-								<div class="rule">Admin</div>
-							</div>
-							<div class="profile-photo">
-								<img
-									src="https://posapp.vn/wp-content/themes/twentysixteen-child/images/icon-user-slide.png"
-									alt="abc">
-							</div>
+		                        <p>Hi, ${user.hoten}</p>
+		                        <div class="rule">${user.vaitro?"Admin":""}</div>
+		                    </div>
+		                    <div class="profile-photo">
+		                        <img src="/images/user/${user.anh}" alt="avt">
+		                    </div>
 						</div>
 					</div>
 

@@ -30,7 +30,7 @@
                         <h3>Tổng tiền trong tháng</h3>
                     </div>
                     <div class="middle">
-                        <h1> <fmt:formatNumber value="${tongtien}" type="number" maxFractionDigits = "3"> </fmt:formatNumber> VND </h1>
+                        <h1> $<fmt:formatNumber value="${tongtien}" type="number" maxFractionDigits = "3"> </fmt:formatNumber></h1>
                     </div>
                 </div>
                 <!-- Số sản phẩm đã bán -->
@@ -64,7 +64,7 @@
                             <th>#ID</th>
                             <th>Tên người mua</th>
                             <th>Số lượng</th>
-                            <th>Tổng tiền (vnđ)</th>
+                            <th>Tổng tiền</th>
                             <th>Trạng thái</th>
                             <th></th>
                         </tr>
