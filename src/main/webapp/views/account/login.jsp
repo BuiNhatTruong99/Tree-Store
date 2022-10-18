@@ -12,7 +12,7 @@
     <title>Index</title>
 </head>
 
-<body>
+<body ng-app="myapp" ng-controller="myctrl">
     <div class="main">
         <!-- Sign up form -->
  
@@ -22,23 +22,31 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" action="/register" class="register-form" id="register-form">
+                        <form name="frmDK" method="POST" action="/register" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="fas fa-user"></i></label>
-                                <input type="text" name="tentk" id="name" placeholder="Your Name" />
+                                <input type="text" name="tentk" id="name" placeholder="Your Name" ng-model="tentk" required="required"/>
                             </div>
+                            <div class="text-danger" style="margin-top: -1.2rem;" ng-hide="frmDK.tentk.$valid">Vui lòng nhập tên tài khoản!</div>
+                            
                             <div class="form-group">
                                 <label for="email"><i class="fas fa-envelope"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email" />
+                                <input type="email" name="email" id="email" placeholder="Your Email" ng-model="email" required="required"/>
                             </div>
+                            <div class="text-danger" style="margin-top: -1.2rem;" ng-hide="frmDK.email.$valid">Vui lòng nhập đúng email!</div>
+                            
                             <div class="form-group">
                                 <label for="pass"><i class="fas fa-lock"></i></label>
-                                <input type="password" name="matkhau" id="pass" placeholder="Password" />
+                                <input type="password" name="matkhau" id="pass" placeholder="Password" ng-model="matkhau" required="required"/>
                             </div>
+                            <div class="text-danger" style="margin-top: -1.2rem;" ng-hide="frmDK.matkhau.$valid">Vui lòng nhập mật khẩu!</div>
+                            
                             <div class="form-group">
                                 <label for="re-pass"><i class="fas fa-key"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" ng-model="re_pass" required="required"/>
                             </div>
+                            <div class="text-danger" style="margin-top: -1.2rem;" ng-hide="frmDK.re_pass.$valid">Vui lòng nhập lại mật khẩu!</div>
+                            
                             <div class="form-group">
                                 <input type="checkbox" name="agree" id="agree-term" class="agree-term"/>
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
@@ -73,15 +81,19 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign in</h2>
-                        <form method="POST" action="/login" class="register-form" id="login-form">
+                        <form name="frmDN" method="POST" action="/login" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="fas fa-user"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" value="hung123"/>
+                                <input type="text" name="your_name" id="your_name" placeholder="Your Name" value="" ng-model="your_name" required="required"/>
                             </div>
+                            <div class="text-danger" style="margin-top: -1.2rem;" ng-hide="frmDN.your_name.$valid">Vui lòng nhập tên tài khoản!</div>
+                            
                             <div class="form-group">
                                 <label for="your_pass"><i class="fas fa-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" value="Hung123"/>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" value="" ng-model="your_pass" required="required"/>
                             </div>
+                            <div class="text-danger" style="margin-top: -1.2rem;" ng-hide="frmDN.your_pass.$valid">Vui lòng nhập mật khẩu!</div>
+                            
                             <div class="form-group">
                                 <input type="checkbox" name="remember" id="remember" class="agree-term" />
                                 <label for="remember" class="label-agree-term"><span><span></span></span>Remember
@@ -108,9 +120,17 @@
         </section>
 
     </div>
+    
+    <script type="text/javascript">
+	    var app = angular.module("myapp", []);
+	    app.controller("myctrl", function ($scope) {
+	       
+	    })
+    </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="<c:url value='/OwlCarousel2-2.3.4/dist/owl.carousel.min.js'/>"></script>
-    <script src="<c:url value='/css/script.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/css/script.js'/>"></script>
 </body>
 
 </html>

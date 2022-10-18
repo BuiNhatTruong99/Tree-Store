@@ -10,6 +10,8 @@ import com.poly.service.SessionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -81,7 +83,8 @@ public class AccountController {
 	}
 	
 	@PostMapping("/register")
-	public String register(@RequestParam(required = false, name = "agree") boolean chkAgree, NguoiDung nd) {
+	public String register(@RequestParam(required = false, name = "agree") boolean chkAgree, 
+									NguoiDung nd) {		
 		// Đọc các tham số từ form sign up (username, email, password, repeat pass, check agree)
 		String re_pass = paramService.getString("re_pass", "");
 		// Kiểm tra đồng ý các điều khoản

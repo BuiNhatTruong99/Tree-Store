@@ -384,7 +384,7 @@
 		</footer>
 		
 		<%@include file="/views/foot/linkfoot.jsp"%>
-		
+
 </body>
 
 </html>

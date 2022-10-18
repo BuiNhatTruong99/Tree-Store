@@ -322,14 +322,15 @@
                 </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form:form action="/checkout" modelAttribute="donDH" method="post" class="row g-3">
+            <form:form action="/checkout" name="frmTT" modelAttribute="donDH" method="post" class="row g-3">
             <div class="modal-body">
                 <div class="container-fluid">
                         
                         <div class="mb-2">
                             <label for="inputName" class="form-label">Tên khách hàng</label>
-                            <input type="text" class="form-control" id="inputName" name="tenkh" value="${user.hoten}" disabled="disabled">
+                            <input type="text" class="form-control" id="inputName" name="tenkh" value="${user.hoten}">
                         </div>
+                        <!-- <div class="text-danger mb-2 ms-2" style="margin-top: -0.2rem;" ng-show="frmTT.tenkh.$invalid">Vui lòng nhập tên của bạn</div> -->
                         
                         <div class="mb-2">
                             <select class="form-select" size="1" aria-label="size 3 select example">
@@ -343,16 +344,19 @@
                             <label for="inputGia" class="form-label">Giá</label>
                             <input type="number" min="0" class="form-control" id="inputGia" name="tongHoaDon" value="${totalAmount + (totalAmount * 10 / 100)}" disabled="disabled">
                         </div>
+                        <!-- <div class="text-danger mb-2 ms-2" style="margin-top: -0.2rem;" ng-hide="tongHoaDon = 0,0">Đơn hàng chưa có sản phẩm</div> -->
                         
                         <div class="mb-2">
                             <label for="inputSdt" class="form-label">Số điện thoại</label>
-                            <input type="text" class="form-control" id="inputSdt" name="sodt" value="${user.sodt}">
+                            <input type="text" class="form-control" id="inputSdt" name="sodt" value="${user.sodt}" ng-model="sodt">
                         </div>
+                        <!-- <div class="text-danger mb-2 ms-2" style="margin-top: -0.2rem;" ng-hide="frmTT.sodt.$valid">Vui lòng nhập số điện thoại</div> -->
                         
                         <div class="mb-2">
                             <label for="inputDiaChi" class="form-label">Địa chỉ</label>
                             <input type="text" class="form-control" id="inputDiaChi" name="diachi" value="${not empty user.diachi? user.diachi: ''}">
                         </div>
+                        <!-- <div class="text-danger mb-2 ms-2" style="margin-top: -0.2rem;" ng-hide="frmTT.diachi.$valid">Vui lòng nhập địa chỉ giao hàng</div> -->
                         
                         <div class="mb-2">
                             <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>

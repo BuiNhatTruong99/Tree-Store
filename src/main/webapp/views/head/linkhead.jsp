@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="<c:url value='/css/animation.css'/>">
 <link rel="stylesheet"
 	href="<c:url value='/fontawesome-free-6.1.1/css/all.min.css'/>">
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.8.0/angular-route.min.js"></script>
 	
 
 

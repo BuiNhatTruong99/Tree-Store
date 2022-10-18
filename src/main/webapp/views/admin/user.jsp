@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <%@include file="/views/head/headadmin.jsp"%>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.8.0/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript">
 		$(document).ready(function() {
@@ -62,7 +64,7 @@
 		});
 	</script>
 </head>
-<body>
+<body ng-app="myapp1" ng-controller="myctrl1">
     <div class="container2">
         <!-- BEGIN ASIDE -->
        <aside>
@@ -220,7 +222,7 @@
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/admin/user/create" method="post" enctype='multipart/form-data'>
+            <form name="frmIU" action="/admin/user/create" method="post" enctype='multipart/form-data'>
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row g-3">
@@ -232,12 +234,16 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="hoten" class="form-label">Họ và tên</label>
-                                <input type="text" class="form-control" name="hoten" id="hoten" placeholder="Nguyễn Văn A...">
+                                <input type="text" class="form-control" name="hoten" id="hoten" placeholder="Nguyễn Văn A..." ng-model="hoten" required="required">
                             </div>
+                            <div class="text-danger mb-2 ms-2" style="margin-top: -0.2rem;" ng-hide="frmIU.hoten.$valid">Vui lòng nhập tên người dùng</div>
+                            
                             <div class="mb-3">
                                 <label for="ngaysinh" class="form-label">Ngày sinh</label>
-                                <input type="date" class="form-control" name="ngaysinh" id="ngaysinh">
+                                <input type="date" class="form-control" name="ngaysinh" id="ngaysinh" ng-model="ngaysinh" required="required">
                             </div>
+                            <div class="text-danger mb-2 ms-2" style="margin-top: -0.2rem;" ng-hide="frmIU.ngaysinh.$valid">Vui lòng nhập ngày sinh của bạn</div>
+                            
                             <div>
                                 <label for="inputPassword4" class="form-label">Giới tính</label>
                                 <div>
@@ -399,6 +405,12 @@
     <script src="<c:url value='/css/admin.js'/>"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
+	
+	<script type="text/javascript">
+		    var app = angular.module("myapp1", []);
+		    app.controller("myctrl1", function ($scope) {
+		       
+		    })
+	</script>
 </body>
 </html>
