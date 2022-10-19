@@ -43,20 +43,18 @@
 						var month = ("0" + (now.getMonth() + 1)).slice(-2);
 						var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 					    $('#ngaysinhshow').val(today);
+
+					    if (nguoidung.gioitinh) {
+					    	$('#gioitinh').find(':radio[name=gender][value="true"]').prop('checked', true);
+						} else {
+							$('#gioitinh').find(':radio[name=gender][value="false"]').prop('checked', true);
+						}
 						
 						if (nguoidung.vaitro) {
-							$('#editModal #ruleshow1:selected') 
+							$('#vaitro').find(':radio[name=rule][value="true"]').prop('checked', true);
 						} else {
-							$('#editModal #ruleshow3:selected');
+							$('#vaitro').find(':radio[name=rule][value="false"]').prop('checked', true);
 						}
-						if (nguoidung.gioitinh) {
-							$('#editModal #gendershow1:selected') 
-						} else {
-							$('#editModal #gendershow2:selected');
-						}
-						
-						//$('#editModal #vaitro').val(nguoidung.vaitro);
-						//$('#editModal #gioitinh').val(nguoidung.gioitinh);
 						//$('#editModal #anh').val(nguoidung.anh);
 					}
 				})
@@ -339,7 +337,7 @@
                                 <label for="ngaysinh" class="form-label">Ngày sinh</label>
                                 <input type="date" class="form-control" name="ngaysinh" id="ngaysinhshow">
                             </div>
-                            <div>
+                            <div id="gioitinh">
                                 <label for="inputPassword4" class="form-label">Giới tính</label>
                                 <div>
                                     <div class="form-check form-check-inline">
@@ -373,19 +371,19 @@
                           <label for="diachi" class="form-label">Địa chỉ</label>
                           <input type="text" class="form-control" name="diachi" id="diachishow" placeholder="1234 Main St">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="vaitro">
                             <label for="inputPassword4" class="form-label">Vai trò</label>
                             <div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="rule" id="ruleshow1" value="true" checked="checked">
                                     <label class="form-check-label" for="rule1">Admin</label>
                                 </div>
-                                <div class="form-check form-check-inline" hidden="">
+                                <!-- <div class="form-check form-check-inline" hidden="">
                                     <input class="form-check-input" type="radio" name="rule" id="ruleshow2" value="false">
                                     <label class="form-check-label" for="rule2">Nhân viên</label>
-                                </div>
+                                </div> -->
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rule3" id="ruleshow3" value="false">
+                                    <input class="form-check-input" type="radio" name="rule" id="ruleshow3" value="false">
                                     <label class="form-check-label" for="rule3">Khách hàng</label>
                                 </div>
                             </div>

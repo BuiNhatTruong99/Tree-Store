@@ -33,17 +33,16 @@
  						$('#editModal #tensp').val(sanpham.tensp);
 						$('#editModal #gia').val(sanpham.gia);
 						$('#editModal #sltonkho').val(sanpham.sltonkho);
-						
 						$('#dm option[value="'+sanpham.id_dm+'"]').attr("selected", "selected");
 						if (sanpham.trangthai == true) {
-							$('#editModal #trangthai1:selected') 
+							$('#trangthai').find(':radio[name=trangthai][value="true"]').prop('checked', true);
 						} else {
-							$('#editModal #trangthai2:selected');
+							$('#trangthai').find(':radio[name=trangthai][value="false"]').prop('checked', true);
 						}
 						if (sanpham._delete == false) { 
-							$('#editModal #is_delete1:selected') 
+							$('#isdelete').find(':radio[name=is_delete][value="false"]').prop('checked', true);
 						} else {
-							$('#editModal #is_delete2:selected');
+							$('#isdelete').find(':radio[name=is_delete][value="true"]').prop('checked', true);
 						}
 						$('#editModal #mota').val(sanpham.mota);
 						//$('#editModal #anh_sp').val(sanpham.anh);
@@ -329,7 +328,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <div class="mb-3">
+                            <div class="mb-3" id="trangthai">
                                 <label for="inputPassword4" class="form-label">Trạng thái</label>
                                 <div class="ms-5">
                                     <div class="form-check form-check-inline">
@@ -342,7 +341,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3" id="isdelete">
                                 <label for="inputPassword4" class="form-label">Hiện trạng</label>
                                 <div class="ms-5">
                                     <div class="form-check form-check-inline">

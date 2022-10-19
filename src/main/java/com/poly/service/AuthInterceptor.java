@@ -18,6 +18,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		// Lấy dừng dẫn sau local
 		String uri = request.getRequestURI();
@@ -27,9 +28,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 		String error = "";
 		
 		if (nd == null) {										 // Nếu người dùng chưa đăng nhập
-			error = "Vui lòng đăng nhập để tiếp tục vào đường dẫn này!";
+			error = "Please Login!";
 		} else if (!nd.isVaitro() && uri.startsWith("/admin")) { // Nếu người dùng ko phải admin
-			error = "Truy cập bị từ chối!";
+			error = "Access denied!";
 		}
 		
 		if (error.length() > 0) {	// Nếu có lỗi
