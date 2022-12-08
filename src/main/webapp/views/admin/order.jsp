@@ -11,6 +11,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <%@include file="/views/head/headadmin.jsp"%>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.8.0/angular-route.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+ 			$('[data-toggle="tooltip"]').tooltip();
+
+			$('table .edit').on('click', function() {
+				var id = $(this).parent().find('#id').val();
+				alert(id);
+			});
+
+			/* $('table .edit').on('click', function() {
+				var id = $(this).parent().find('#id').val();
+				$.ajax({
+					type: 'GET',
+					url: '${pageContext.request.contextPath}/admin/product/edit/' + id,
+					success: function(sanpham) {
+						$('#editModal #id').val(sanpham.id_sp);
+					}
+				})
+			}); */
+		});
+	</script>
+	
 </head>
 <body>
     <div class="container2">
@@ -92,7 +118,9 @@
                       <td>${item.trangthai}</td>
                       <td>
                         <a type="submit" href="/increase/${item.id_ddh}"><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xác nhận">task_alt</span></a>
-                        <a href="#"><span class="material-symbols-sharp" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-bs-placement="bottom" title="Xem chi tiết">expand_circle_down</span></a>
+                        <a href="#" class="edit" ><span class="material-symbols-sharp" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-bs-placement="bottom" title="Xem chi tiết">expand_circle_down</span></a>
+                        <input type="hidden" id="id" value="${item.id_ddh }">
+                        
                         <a href="/delete/${item.id_ddh }" ><span class="material-symbols-sharp" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xóa">disabled_by_default</span></a>
                       </td>
                     </tr>
@@ -106,7 +134,7 @@
                     <div class="accordion-body row">
                         <div class="col">
                             <form class="row g-3">
-                            <c:forEach items="${confirm }" var="item">
+                            
                                 <div class="mb-3">
                                     <label for="inputSDT" class="form-label">Số điện thoại</label>
                                     <input type="text" class="form-control" id="inputSdt" value="${item.sodt }" disabled>
@@ -119,7 +147,7 @@
                                     <label for="formControlTextarea" class="form-label">Ghi chú khách hàng</label>
                                     <textarea class="form-control" id="formControlTextarea" rows="4" disabled>${item.ghichukh }</textarea>
                                 </div>
-                                </c:forEach>
+
                             </form>
                         </div>
                         <div class="col">
